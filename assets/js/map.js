@@ -1,6 +1,8 @@
 // GLOBAL VARIABLES
 var map;
 
+initMap();
+
 // Function to create a blank leaflet map on the #map element
 function initMap(){
   // Init basemaps
