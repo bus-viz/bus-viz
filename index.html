@@ -1,6 +1,7 @@
 <html>
   <head>
     <title>Bus/Rental Property Viz</title>
+
     <!-- EXTERNAL CSS -->
     <!-- leaflet -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css">
@@ -11,8 +12,29 @@
     <!-- d3 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 
+    <!-- map manipulation functions -->
+    <script src="assets/js/map.js"></script>
+
   </head>
   <body>
+
+    <style media="screen">
+      html, body{
+          height: 100%;
+          width: 100%;
+          margin: 0px;
+      }
+      #map{
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+
+    <div id="map"></div>
+
+    <script charset="utf-8">
+      initMap();
+    </script>
 
   </body>
 </html>
