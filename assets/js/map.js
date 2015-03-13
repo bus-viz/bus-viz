@@ -15,7 +15,10 @@ var baseMaps = {
 var overlayMaps = {
     "Bus stops": L.geoJson(bus_stops, {
       pointToLayer: function(feature, latlng){
-        return L.circleMarker(latlng,{ stroke: false }).setRadius(3);
+        return L.circleMarker(latlng,{
+          stroke: false,
+          opacity: 0.8,
+        }).setRadius(3);
       }
     }),
     "Bus routes": L.geoJson(bus_shapes)
