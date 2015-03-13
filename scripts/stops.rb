@@ -7,7 +7,11 @@ CSV.foreach('stops.txt', headers: true) do |row|
   features << {
     type: 'Feature',
     properties: {
-      name: row['stop_name']
+      stop_id: row['stop_id'],
+      stop_name: row['stop_name'],
+      location_type: row['location_type'],
+      parent_station: row['parent_station'],
+      stop_short_name: row['stop_short_name']
     },
     geometry: {
       type: 'Point',

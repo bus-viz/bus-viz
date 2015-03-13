@@ -7,20 +7,22 @@ require 'json'
 features = []
 
 coordinates = []
-shape_id = nil 
-CSV.foreach('shapes.txt', headers: true) do |row|  
+shape_id = nil
+CSV.foreach('shapes.txt', headers: true) do |row|
   if row['shape_id'] != shape_id
-    # new shape!    
+    # new shape!
     if shape_id
       features << {
         type: 'Feature',
-        properties: {},
+        properties: {
+          shape_id: row['shape_id']
+        },
         geometry: {
           type: 'LineString',
           coordinates: coordinates
         }
       }
-    end    
+    end
     coordinates = []
     shape_id = row['shape_id']
   end
