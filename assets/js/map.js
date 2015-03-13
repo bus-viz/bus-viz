@@ -12,15 +12,19 @@ var baseMaps = {
 };
 
 // Init overlays
-
 var overlayMaps = {
-    //eg "Bus stops": busstops
+    "Bus stops": L.geoJson(bus_stops, {
+      pointToLayer: function(feature, latlng){
+        return L.circleMarker(latlng,{ stroke: false }).setRadius(3);
+      }
+    }),
+    "Bus routes": L.geoJson(bus_shapes)
 };
 
 // Init map
 var map = L.map('map', {
-  center: [51.505, -0.09],
-  zoom: 13,
+  center: [48.45368424076468, -123.34093093872069],
+  zoom: 12,
   layers: [mapnik_bw]
 });
 
