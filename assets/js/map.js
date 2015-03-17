@@ -21,7 +21,11 @@ var overlayMaps = {
         }).setRadius(3);
       }
     }),
-    "Bus routes": L.geoJson(bus_shapes)
+    "Bus routes": L.geoJson(bus_shapes, {
+      onEachFeature: function (feature, layer) {
+        layer.bindPopup(feature.properties.shape_id);
+      }
+    })
 };
 
 // Init map
