@@ -1,4 +1,7 @@
 #!/usr/bin/python
+# Written by Taylor Denouden March 17, 2014
+
+# Script to convert GTFS stops to geojson
 
 import sys
 import csv
