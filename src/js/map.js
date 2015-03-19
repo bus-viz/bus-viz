@@ -31,7 +31,7 @@ var overlayMaps = {
 // Init map
 var map = L.map('map', {
   center: [52.50578645650081, 13.40080976486206],
-  zoom: 12,
+  zoom: 13,
   layers: [mapnik_bw]
 });
 
