@@ -1,9 +1,22 @@
 
+	var redMarker = L.AwesomeMarkers.icon({
+    	markerColor: 'red'
+  	});
+  	var blueMarker = L.AwesomeMarkers.icon({
+    	markerColor: 'blue'
+  	});
+
 	// add each house to the map, and save a reference to it
-	houses.forEach(function(house){
-		house.marker = L.marker({lat: house.lat, lng: house.lng}, {title: house.description});
+	for (var index in houses) {
+		var house = houses[index];
+		house.marker = L.marker({lat: house.lat, lng: house.lng}, {title: house.description, icon: blueMarker});
 		house.priceRng = Math.floor(+house.price/200) * 200;
-	});
+
+		house.index = index;
+		house.selectedMarker = L.marker({lat: house.lat, lng: house.lng}, {title: house.description, icon: redMarker, zIndexOffset: 20});
+		house.selected = false;
+
+	}
 
 	var ndx = crossfilter().add(houses),
 	dimID = ndx.dimension(function(d){return +d.id || 0}),
@@ -15,11 +28,47 @@
 	dimPriceRng = ndx.dimension(function(d){return d.priceRng || 0});
 
 	function reduceAddMap(p, v) {
+		
+		var imagelink;
+		if(v.images.length == 0) {
+			imagelink = 'default_house.png'
+		}
+		else {
+			imageLink = v.images[0];
+		}
+
+		var desc;
+		if(v.description == ""){
+			desc = "[No Description Available]";
+		}
+		else {
+			desc = v.description;
+		}
+
+		var template = '<li data-id="' + v.id + '"style="display:block">'
+			+   '<img src='+ imageLink +' class="circle"></img>'
+			+	'<div>'
+			+		'<b>' + desc + '</b>'
+			+	'</div>'
+			+	'<div>'
+			+		'$' + v.price + ' | ' + v.beds + ' beds | ' + v.baths + ' baths'
+			+		'<span style="float: right; margin-top: 17px">'
+			+			'<a href="' + v.url + '" target="_blank">View Listing</a>'
+			+		'</span>'
+			+	'</div>'
+			+	'<hr>'
+			+'</li>'
+
+		$("#unselected-list").append(template);
+
 		v.marker.addTo(map);
 		return p + 1;
 	}
 
 	function reduceRemoveMap(p, v) {
+		
+		$("#unselected-list li[data-id="+v.id +"]").remove();
+
 		map.removeLayer(v.marker);
 		return p - 1;
 	}
@@ -50,15 +99,29 @@
 	chtBeds = dc.barChart("#beds")
 	 	.width(400)
 		.height(200)
-		.x(d3.scale.linear().domain([1,10]))
+		.x(d3.scale.linear().domain([1,8]))
 	    .brushOn(true)
 	    //.renderArea(true)
 		.xAxisLabel("Beds")
 		.yAxisLabel("Listings")
 		.dimension(dimBeds)
+		.elasticY(true)
 		.group(grpBeds);
-	
 
+	var grpBaths = dimBaths.group().reduceCount();
+	
+	chtBeds = dc.barChart("#baths")
+	 	.width(400)
+		.height(200)
+		.x(d3.scale.linear().domain([1,8]))
+	    .brushOn(true)
+	    //.renderArea(true)
+		.xAxisLabel("Baths")
+		.yAxisLabel("Listings")
+		.dimension(dimBaths)
+		.elasticY(true)
+		.group(grpBaths);
+	
 
 
 	dc.renderAll();
