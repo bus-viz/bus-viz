@@ -29,10 +29,10 @@
 	list-style:none;
 	padding:0; 
 	overflow-y:scroll; 
-	max-height:500px;
 	width:450px;
 	transition: all 0.2s ease-out;
 	-webkit-transition: all 0.2s ease-out;
+	cursor: pointer;
 }
 
 .list:empty {
