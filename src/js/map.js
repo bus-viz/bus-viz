@@ -8,8 +8,8 @@ var mapnik_bw = L.tileLayer('http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{
 
 // Init map
 var map = L.map('map', {
-  // center: [52.50578645650081, 13.40080976486206], //Berlin
-  center: [48.44406299071947, -123.32316398620604], //Victoria
+  center: [52.50578645650081, 13.40080976486206], //Berlin
+  // center: [48.44406299071947, -123.32316398620604], //Victoria
   zoom: 13,
   layers: [mapnik_bw]
 });
@@ -27,14 +27,14 @@ map.on('dblclick', function(e){
   var latlng = [e.latlng.lat, e.latlng.lng];
   var marker = L.marker(latlng).addTo(map);
 
-  travelOptions.addSource(e.latlng);
+  travelOptions.addSource(marker);
   // polygons for 5 to 30 minutes
   travelOptions.setTravelTimes([300, 600, 900, 1200, 1500, 1800]);
-  travelOptions.setTravelType('car')
+  travelOptions.setTravelType('transit')
 
   // call the service
   r360.PolygonService.getTravelTimePolygons(travelOptions, function(polygons){
-    console.log(polygons);
+    // console.log(polygons);
     polygonLayer.addLayer(polygons);
     // map.fitBounds(polygonLayer.getBoundingBox());
   },
