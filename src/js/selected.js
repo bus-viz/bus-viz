@@ -33,7 +33,7 @@ function selectListing(index) {
 		+	'<div>'
 		+		'$' + v.price + ' | ' + v.beds + ' beds | ' + v.baths + ' baths'
 		+		'<span style="float: right; margin-top: 17px">'
-		+			'<a href="' + v.url + '" target="_blank">View Listing</a>'
+		+			'<a href="' + v.url + '" target="_blank">'+v.sourceName+'</a>'
 		+		'</span>'
 		+	'</div>'
 		+	'<hr>'
