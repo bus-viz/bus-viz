@@ -43,3 +43,31 @@ map.on('dblclick', function(e){
           service will be available shortly.");
   });
 });
+
+// add a radio element with all the different transport types
+var buttonOptions = {
+    buttons : [
+        // each button has a label which is displayed, a key, a tooltip for mouseover events
+        // and a boolean which indicates if the button is selected by default
+        // labels may contain html
+        { label: '<i class="fa fa-bicycle"></i> Cycling', key: 'bike',
+          tooltip: 'Cycling speed is on average 15km/h', checked : false },
+
+        { label: '<i class="fa fa-male"></i>  Walking', key: 'walk',
+          tooltip: 'Walking speed is on average 5km/h', checked : true  },
+
+        { label: '<i class="fa fa-car"></i> Car', key: 'car',
+          tooltip: 'Car speed is limited by speed limit', checked : false },
+
+        { label: '<i class="fa fa-bus"></i> Transit', key: 'transit',
+          tooltip: 'This demo only contains subways', checked : false }
+    ]
+};
+
+
+$(document).ready(function(){
+  // create a new readio button control with the given options
+  var travelTypeButtons = r360.radioButtonControl(buttonOptions);
+  // add the newly created control to the map
+  map.addControl(travelTypeButtons);
+});

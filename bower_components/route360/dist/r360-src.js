@@ -1230,7 +1230,8 @@ r360.PolygonService = {
             });
 
             if ( !_.has(r360.PolygonService.cache, JSON.stringify(cfg)) ) {
-
+								console.log(r360.config.serviceUrl + r360.config.serviceVersion + '/polygon?cfg=' +
+                    encodeURIComponent(JSON.stringify(cfg)) + '&cb=?&key='+r360.config.serviceKey);
                 // make the request to the Route360° backend
                 $.getJSON(r360.config.serviceUrl + r360.config.serviceVersion + '/polygon?cfg=' +
                     encodeURIComponent(JSON.stringify(cfg)) + '&cb=?&key='+r360.config.serviceKey,
