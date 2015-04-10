@@ -1,11 +1,20 @@
-map.on('draw:created', function (e) {
-    var type = e.layerType,
-        layer = e.layer;
+var transitPolys = L.geoJson(fake_polys, {
+  clickable: true,
+  color: "rgb(215, 0, 0)",
+  weight: 1,
+  className: "transit-poly",
+  opacity: 0.5,
+  fillOpacity: 0.15,
 
-    if (type === 'polygon') {
-        console.log(e);
-    }
+  onEachFeature: function(data, layer){
+    layer.on('click', function(e){
+      // Set only selected poly to heavier line weight
+      transitPolys.setStyle({weight: 1});
+      layer.setStyle({weight: 4});
 
-    // Do whatever else you need to. (save to db, add to map etc)
-    map.addLayer(layer);
-});
+      // TODO Filter dimID by polygon
+
+
+    });
+  },
+}).addTo(map);
