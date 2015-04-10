@@ -3,22 +3,22 @@
 	border: 2px solid rgba(0,0,0,0.2);
 	background:white;
 	opacity:.8;
-	padding:20px;
-	margin: 10px
+	padding:10px;
+	margin: 5px
 }
 .graph strong {
 	display: block;
 	text-align: center;
 }
 .circle {
-    border-radius: 30px;
-    border: 1px solid rgba(0,0,0,0.2);
-    width: 48px;
-    height:48px;
-    margin: 10px;
+  border-radius: 30px;
+  border: 1px solid rgba(0,0,0,0.2);
+  width: 48px;
+  height:48px;
+  margin: 10px;
 	margin-top: -3px;
 	margin-bottom: 5px;
-    float:left;
+  float:left;
 }
 
 .list {
@@ -27,8 +27,8 @@
 	background:white;
 	opacity:.9;
 	list-style:none;
-	padding:0; 
-	overflow-y:scroll; 
+	padding:0;
+	overflow-y:scroll;
 	width:450px;
 	transition: all 0.2s ease-out;
 	-webkit-transition: all 0.2s ease-out;

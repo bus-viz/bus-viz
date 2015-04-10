@@ -31,8 +31,8 @@ dimDogs = ndx.dimension(function(d){return +d.dogs || 0}),
 dimPriceRng = ndx.dimension(function(d){return d.priceRng || 0});
 
 function reduceAddMap(p, v) {
-	
-	if(selectedIndexes.indexOf(v.index) >= 0) 
+
+	if(selectedIndexes.indexOf(v.index) >= 0)
 		return p + 1;
 
 	var imagelink;
@@ -72,7 +72,7 @@ function reduceAddMap(p, v) {
 }
 
 function reduceRemoveMap(p, v) {
-	
+
 	$("#unselected-list li[data-id="+v.id +"]").remove();
 
 	map.removeLayer(v.marker);
@@ -94,7 +94,7 @@ chtPrice = dc.lineChart("#price")
 	.x(d3.scale.linear().domain([0,5000]))
     .brushOn(true)
     .renderArea(true)
-	.xAxisLabel("Price")
+	.xAxisLabel("Price ($)")
 	.yAxisLabel("Listings")
 	.dimension(dimPriceRng)
 	.elasticY(true)
@@ -105,9 +105,10 @@ var grpBeds = dimBeds.group().reduceCount();
 chtBeds = dc.barChart("#beds")
  	.width(400)
 	.height(200)
-	.x(d3.scale.linear().domain([1,8]))
-    .brushOn(true)
-    //.renderArea(true)
+	.x(d3.scale.linear().domain([0.5,8.5]))
+	  .brushOn(true)
+	  //.renderArea(true)
+		.centerBar(true)
 	.xAxisLabel("Beds")
 	.yAxisLabel("Listings")
 	.dimension(dimBeds)
@@ -119,9 +120,10 @@ var grpBaths = dimBaths.group().reduceCount();
 chtBeds = dc.barChart("#baths")
  	.width(400)
 	.height(200)
-	.x(d3.scale.linear().domain([1,8]))
-    .brushOn(true)
-    //.renderArea(true)
+	.x(d3.scale.linear().domain([0.5,8.5]))
+	  .brushOn(true)
+	  //.renderArea(true)
+		.centerBar(true)
 	.xAxisLabel("Baths")
 	.yAxisLabel("Listings")
 	.dimension(dimBaths)
@@ -131,7 +133,3 @@ chtBeds = dc.barChart("#baths")
 
 
 dc.renderAll();
-
-
-
-
