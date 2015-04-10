@@ -20,6 +20,6 @@
     "tests"
   ],
   "dependencies": {
-    "route360": "~0.1.0"
+    "leaflet-draw": "git://github.com/Leaflet/Leaflet.draw.git#~0.2.4"
   }
 }

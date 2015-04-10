@@ -9,9 +9,10 @@ var mapnik_bw = L.tileLayer('http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{
 
 // Init map
 var map = L.map('map', {
-   center: [48.44406299071947, -123.32316398620604], //Victoria
+  center: [48.44406299071947, -123.32316398620604], //Victoria
   zoom: 13,
-  layers: [mapnik_bw]
+  layers: [mapnik_bw],
+  drawControl: true,
 });
 
 

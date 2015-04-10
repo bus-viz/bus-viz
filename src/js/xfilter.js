@@ -6,7 +6,7 @@ var blueMarker = L.AwesomeMarkers.icon({
 	markerColor: 'blue'
 	});
 var cadetBlueMarker = L.AwesomeMarkers.icon({
-	markerColor: 'cadetBlue'
+	markerColor: 'cadetblue'
 	});
 
 // add each house to the map, and save a reference to it

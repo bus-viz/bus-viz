@@ -5,3 +5,19 @@ html, body{
     width: 100%;
     margin: 0px;
 }
+
+.viz-control{
+  position:absolute;
+  z-index:50000;
+  /*display: none;*/
+}
+
+#filter-controls{
+  right: 10px;
+  top: 10px;
+}
+
+#list-controls{
+  left: 9px;
+  bottom: 9px;
+}
