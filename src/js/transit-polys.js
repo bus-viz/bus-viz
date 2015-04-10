@@ -1,6 +1,6 @@
 var transitPolys = L.geoJson(fake_polys, {
   clickable: true,
-  color: "rgb(215, 0, 0)",
+  color: "#D70000",
   weight: 1,
   className: "transit-poly",
   opacity: 0.5,
@@ -13,8 +13,7 @@ var transitPolys = L.geoJson(fake_polys, {
       layer.setStyle({weight: 4});
 
       // TODO Filter dimID by polygon
-
-
+      console.log(layer);
     });
   },
 }).addTo(map);
