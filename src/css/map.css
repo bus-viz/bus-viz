@@ -4,3 +4,11 @@
   height: 100%;
   width: 100%;
 }
+
+/*.viz-control{
+  display: none;
+}*/
+
+.transit-poly:hover {
+	stroke-width: 4px;
+}

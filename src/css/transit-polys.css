@@ -1,8 +1,0 @@
-/*Temporary hidding while creating polygons*/
-/*.viz-control{
-  display: none;
-}*/
-
-.transit-poly:hover {
-	stroke-width: 4px;
-}
