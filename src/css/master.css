@@ -21,3 +21,9 @@ html, body{
   left: 9px;
   bottom: 9px;
 }
+
+/*Remove x axis line on ordinal bar charts*/
+#beds .x path,
+#baths .x path {
+	stroke: none;
+}
