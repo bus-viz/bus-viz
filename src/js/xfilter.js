@@ -90,22 +90,25 @@ grpMap.all();
 var grpPriceRng = dimPriceRng.group().reduceCount();
 
 chtPrice = dc.lineChart("#price")
- 	.width(400)
-	.height(200)
+ 	.width(275)
+	.height(150)
 	.x(d3.scale.linear().domain([0,5000]))
     .brushOn(true)
     .renderArea(true)
-	.xAxisLabel("Price ($)")
+	.xAxisLabel("Price")
 	.yAxisLabel("Listings")
 	.dimension(dimPriceRng)
 	.elasticY(true)
 	.group(grpPriceRng);
+chtPrice.margins().right = 15;
+chtPrice.xAxis().ticks(5).tickFormat(function(d){return "$" + d;});
+chtPrice.yAxis().ticks(7);;
 
 var grpBeds = dimBeds.group().reduceCount();
 
 chtBeds = dc.barChart("#beds")
- 	.width(400)
-	.height(200)
+ 	.width(275)
+	.height(150)
 	.x(d3.scale.ordinal())
 		.xUnits(dc.units.ordinal)
 	  .brushOn(false)
@@ -115,12 +118,14 @@ chtBeds = dc.barChart("#beds")
 	.dimension(dimBeds)
 	.elasticY(true)
 	.group(grpBeds);
+chtBeds.margins().right = -20;
+chtBeds.yAxis().ticks(5);
 
 var grpBaths = dimBaths.group().reduceCount();
 
 chtBaths = dc.barChart("#baths")
- 	.width(400)
-	.height(200)
+ 	.width(275)
+	.height(150)
 	.x(d3.scale.ordinal())
 		.xUnits(dc.units.ordinal)
 	  .brushOn(false)
@@ -130,6 +135,8 @@ chtBaths = dc.barChart("#baths")
 	.dimension(dimBaths)
 	.elasticY(true)
 	.group(grpBaths);
+chtBaths.margins().right = -30;
+chtBaths.yAxis().ticks(5);
 
 
 
