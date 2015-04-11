@@ -22,6 +22,16 @@ var transitPolys = L.geoJson(fake_polys, {
   },
 }).addTo(map);
 
+// Reset points if click on map not in a polgon
+map.on('click', function(e){
+  var polys = transitPolys.getLayers();
+  for(var i in polys){
+    if(pointInPoly(e.latlng, polys[i].getLatLngs())) return;
+  }
+  transitPolys.setStyle({weight: 1});
+  dimLatLng.filterAll()
+  dc.redrawAll();
+});
 
 // Purpose: Calculate if a point is in a polygon
 // Input:   point format: [o.LatLng]; polygon format: [[o.LatLng],[o.LatLng],...]
