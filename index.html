@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="src/css/james.css">
     <link rel="stylesheet" href="src/css/leaflet.awesome-markers.css">
     <link rel="stylesheet" href="src/css/leaflet-search.css">
-    <link rel="stylesheet" href="src/css/transit-polys.css">
   </head>
 
   <body>
@@ -27,17 +26,26 @@
       <ol style="list-style:none">
         <li>
           <div id="price" class="graph">
-            <strong>Price Range</strong>
+            <div class="graph-title">
+              <strong>Price Range</strong>
+              <a class='reset label label-danger' href='javascript:chtPrice.filterAll();dc.redrawAll();' style='display: none;'>reset</a>
+            </div>
           </div>
         </li>
         <li>
           <div id="beds" class="graph">
-            <strong>Bedrooms</strong>
+            <div class="graph-title">
+              <strong>Bedrooms</strong>
+              <a class='reset label label-danger' href='javascript:chtBeds.filterAll();dc.redrawAll();' style='display: none;'>reset</a>
+            </div>
           </div>
         </li>
         <li>
           <div id="baths" class="graph">
-            <strong>Bathrooms</strong>
+            <div class="graph-title">
+              <strong>Bathrooms</strong>
+              <a class='reset label label-danger' href='javascript:chtBaths.filterAll();dc.redrawAll();' style='display: none;'>reset</a>
+            </div>
           </div>
         </li>
       </ol>

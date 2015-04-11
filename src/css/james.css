@@ -6,9 +6,13 @@
 	padding:10px;
 	margin: 5px
 }
-.graph strong {
+.graph-title {
 	display: block;
 	text-align: center;
+}
+.graph-title .reset {
+	position: absolute;
+	margin-left: 5px;
 }
 .circle {
   border-radius: 30px;
