@@ -1,6 +1,6 @@
 var transitPolys = L.geoJson(fake_polys, {
   clickable: true,
-  color: "#D70000",
+  color: "#007700",
   weight: 1,
   className: "transit-poly",
   opacity: 0.5,
