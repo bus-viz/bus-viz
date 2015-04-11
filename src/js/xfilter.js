@@ -23,6 +23,7 @@ for (var index in houses) {
 
 var ndx = crossfilter().add(houses),
 dimID = ndx.dimension(function(d){return +d.id || 0}),
+dimLatLng = ndx.dimension(function(d){return L.latLng(+d.lat, +d.lng)}),
 dimPrice = ndx.dimension(function(d){return d.price || 0}),
 dimBeds = ndx.dimension(function(d){return +d.beds || 0}),
 dimBaths = ndx.dimension(function(d){return +d.baths || 0}),
