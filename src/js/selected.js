@@ -61,5 +61,37 @@ function unselectListing(index) {
 
 	mouseLeave(index)
 
-	grpMap.all();
+	var imagelink;
+	if(v.images.length == 0) {
+		imagelink = 'default_house.png'
+	}
+	else {
+		imageLink = v.images[0];
+	}
+
+	var desc;
+	if(v.description == ""){
+		desc = "[No Description Available]";
+	}
+	else {
+		desc = v.description;
+	}
+
+	var template = '<li onmouseenter="mouseEnter('+v.index+')" onmouseleave="mouseLeave('+v.index+')" title="compare listing" onclick="selectListing('+v.index+')" data-id="' + v.id + '"style="display:block">'
+		+   '<img src='+ imageLink +' class="circle"></img>'
+		+	'<div>'
+		+		'<b>' + desc + '</b>'
+		+	'</div>'
+		+	'<div>'
+		+		'$' + v.price + ' | ' + v.beds + ' beds | ' + v.baths + ' baths'
+		+		'<span style="float: right; margin-top: 17px">'
+		+			'<a href="' + v.url + '" target="_blank">'+v.sourceName+'</a>'
+		+		'</span>'
+		+	'</div>'
+		+	'<hr>'
+		+'</li>'
+
+	$("#unselected-list").append(template);
+
+	v.marker.addTo(map);
 }

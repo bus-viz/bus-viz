@@ -18,7 +18,7 @@ var map = L.map('map', {
 
 var markersLayer = new L.LayerGroup();
 map.addLayer(markersLayer);
-map.addControl( new L.Control.Search({layer: markersLayer}));
+//map.addControl( new L.Control.Search({layer: markersLayer}));
 
 
 var data = [

@@ -19,6 +19,15 @@ for (var index in houses) {
 	house.selectedMarker = L.marker({lat: house.lat, lng: house.lng}, {title: house.description, icon: redMarker, zIndexOffset: 20});
 	house.selected = false;
 	house.hoverMarker = L.marker({lat: house.lat, lng: house.lng}, {title: house.description, icon: cadetBlueMarker, zIndexOffset: 100});
+
+	house.marker.on('click', selectListing.bind(null, house.index));
+	house.hoverMarker.on('click', selectListing.bind(null, house.index));
+	house.selectedMarker.on('click', unselectListing.bind(null, house.index));
+	house.marker.on("mouseover", mouseEnter.bind(null, house.index));
+	//house.selectedMarker.on("mouseover", mouseEnter.bind(null, house.index));
+	house.hoverMarker.on("mouseout", mouseLeave.bind(null, house.index));
+	//house.marker.on("mouseout", mouseLeave.bind(null, house.index));
+	//house.selectedMarker.on("mouseout", mouseLeave.bind(null, house.index));
 }
 
 var ndx = crossfilter().add(houses),
@@ -87,7 +96,9 @@ function reduceInitialMap() {
 var grpMap = dimID.group().reduce(reduceAddMap, reduceRemoveMap, reduceInitialMap);
 grpMap.all();
 
+
 var grpPriceRng = dimPriceRng.group().reduceCount();
+
 
 chtPrice = dc.lineChart("#price")
  	.width(275)

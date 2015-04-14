@@ -1,4 +1,4 @@
-(function() {
+/*(function() {
 
 L.Control.Search = L.Control.extend({
 	includes: L.Mixin.Events,
@@ -895,5 +895,5 @@ L.control.search = function (options) {
     return new L.Control.Search(options);
 };
 
-}).call(this);
+}).call(this);*/
 
