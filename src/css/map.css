@@ -11,4 +11,6 @@
 
 .transit-poly:hover {
 	stroke-width: 4px;
+	opacity:.7;
+	fill-opacity: .5
 }

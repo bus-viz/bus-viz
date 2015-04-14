@@ -9,8 +9,8 @@ var transitPolys = L.geoJson(fake_polys, {
   onEachFeature: function(data, layer){
     layer.on('click', function(e){
       // Set only selected poly to heavier line weight
-      transitPolys.setStyle({weight: 1});
-      layer.setStyle({weight: 4});
+      transitPolys.setStyle({weight: 1, color: "#007700"});
+      layer.setStyle({weight: 4, color: "#000077"});
 
       // Filter points if not in polygon
       dimLatLng.filter(function(d){
