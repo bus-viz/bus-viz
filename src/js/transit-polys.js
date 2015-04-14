@@ -28,7 +28,7 @@ map.on('click', function(e){
   for(var i in polys){
     if(pointInPoly(e.latlng, polys[i].getLatLngs())) return;
   }
-  transitPolys.setStyle({weight: 1});
+  transitPolys.setStyle({weight: 1, color: "#007700"});
   dimLatLng.filterAll()
   dc.redrawAll();
 });
