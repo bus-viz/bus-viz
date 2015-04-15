@@ -1,4 +1,4 @@
-/*(function() {
+(function() {
 
 L.Control.Search = L.Control.extend({
 	includes: L.Mixin.Events,
@@ -154,6 +154,8 @@ L.Control.Search = L.Control.extend({
 	},
 	
 	showAlert: function(text) {
+		if(this.options.text == '15')
+			alert('yay');
 		text = text || this.options.textErr;
 		this._alert.style.display = 'block';
 		this._alert.innerHTML = text;
@@ -561,6 +563,7 @@ L.Control.Search = L.Control.extend({
 		switch(e.keyCode)
 		{
 			case 27: //Esc
+				alert("yayayay");
 				this.collapse();
 			break;
 			case 13: //Enter
@@ -619,6 +622,7 @@ L.Control.Search = L.Control.extend({
 //	in this mode every record can have a free structure of attributes, only 'loc' is required
 	
 		var inputText = this._input.value,
+
 			that = this;
 		
 		if(this._curReq && this._curReq.abort)
@@ -717,10 +721,18 @@ L.Control.Search = L.Control.extend({
 			this.expand();
 		else
 		{
-			if(this._input.value === '')	//hide _input only
+			if(this._input.value === ''){	//hide _input only
+//				alert("Please enter a bus route to search.");
+				map.removeLayer(route); 
 				this.collapse();
+			}
 			else
 			{
+				//var route = this._input.value;
+				var route = L.geoJson(bus_route_14);
+				route.addTo(map);
+/*
+*************************************************************************************************
 				var loc = this._getLocation(this._input.value);
 				
 				if(loc===false)
@@ -733,7 +745,7 @@ L.Control.Search = L.Control.extend({
 							text: this._input.value,
 							layer: loc.layer ? loc.layer : null
 						});
-				}
+				}*/
 				//this.collapse();
 				//FIXME if collapse in _handleSubmit hide _markerLoc!
 			}
@@ -848,7 +860,7 @@ var SearchMarker = L.Marker.extend({
 		if(this._circleLoc)			
 			this._circleLoc.setStyle({fill: false, stroke: false});
 		return this;
-	},
+	} ,
 
 	animate: function() {
 	//TODO refact animate() more smooth! like this: http://goo.gl/DDlRs
@@ -882,7 +894,7 @@ var SearchMarker = L.Marker.extend({
 		
 		return this;
 	}
-});
+}); 
 
 L.Map.addInitHook(function () {
     if (this.options.searchControl) {
@@ -895,5 +907,5 @@ L.control.search = function (options) {
     return new L.Control.Search(options);
 };
 
-}).call(this);*/
+}).call(this);
 
