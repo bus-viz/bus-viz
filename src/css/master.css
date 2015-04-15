@@ -23,6 +23,16 @@ html, body{
   top: 84px;
 }
 
+#animal-switches {
+  left: 8px;
+  /*bottom: 9px;*/
+  top: 0px;
+}
+
+#animal-switches li {
+  display: inline-block;
+}
+
 /*Remove x axis line on ordinal bar charts*/
 #beds .x path,
 #baths .x path {

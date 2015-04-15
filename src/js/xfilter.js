@@ -30,14 +30,17 @@ for (var index in houses) {
 	//house.selectedMarker.on("mouseout", mouseLeave.bind(null, house.index));
 }
 
+var aptTypes = ["Full", "Sublet", "Room", "Vacation"];
+var binTypes = ["None","Allowed"];
+
 var ndx = crossfilter().add(houses),
 dimID = ndx.dimension(function(d){return +d.id || 0}),
 dimLatLng = ndx.dimension(function(d){return L.latLng(+d.lat, +d.lng)}),
 dimPrice = ndx.dimension(function(d){return d.price || 0}),
 dimBeds = ndx.dimension(function(d){return +d.beds || 0}),
 dimBaths = ndx.dimension(function(d){return +d.baths || 0}),
-dimCats = ndx.dimension(function(d){return +d.cats || 0}),
-dimDogs = ndx.dimension(function(d){return +d.dogs || 0}),
+dimCats = ndx.dimension(function(d){return binTypes[+d.cats || 0]}),
+dimDogs = ndx.dimension(function(d){return binTypes[+d.dogs || 0]}),
 dimPriceRng = ndx.dimension(function(d){return d.priceRng || 0});
 
 function reduceAddMap(p, v) {
@@ -100,7 +103,7 @@ grpMap.all();
 var grpPriceRng = dimPriceRng.group().reduceCount();
 
 
-chtPrice = dc.lineChart("#price")
+var chtPrice = dc.lineChart("#price")
  	.width(275)
 	.height(150)
 	.x(d3.scale.linear().domain([0,5000]))
@@ -117,13 +120,13 @@ chtPrice.yAxis().ticks(7);;
 
 var grpBeds = dimBeds.group().reduceCount();
 
-chtBeds = dc.barChart("#beds")
+var chtBeds = dc.barChart("#beds")
  	.width(275)
 	.height(150)
 	.x(d3.scale.ordinal())
-		.xUnits(dc.units.ordinal)
-	  .brushOn(false)
-		.centerBar(true)
+	.xUnits(dc.units.ordinal)
+	.brushOn(false)
+	.centerBar(true)
 	.xAxisLabel("Beds")
 	.yAxisLabel("Listings")
 	.dimension(dimBeds)
@@ -134,13 +137,13 @@ chtBeds.yAxis().ticks(5);
 
 var grpBaths = dimBaths.group().reduceCount();
 
-chtBaths = dc.barChart("#baths")
+var chtBaths = dc.barChart("#baths")
  	.width(275)
 	.height(150)
 	.x(d3.scale.ordinal())
-		.xUnits(dc.units.ordinal)
-	  .brushOn(false)
-		.centerBar(true)
+	.xUnits(dc.units.ordinal)
+	.brushOn(false)
+	.centerBar(true)
 	.xAxisLabel("Baths")
 	.yAxisLabel("Listings")
 	.dimension(dimBaths)
@@ -148,6 +151,32 @@ chtBaths = dc.barChart("#baths")
 	.group(grpBaths);
 chtBaths.margins().right = -30;
 chtBaths.yAxis().ticks(5);
+
+var grpCats = dimCats.group().reduceCount();
+
+var chtCats = dc.pieChart("#cats")
+ 	.width(75)
+	.height(75)
+	.slicesCap(2)
+    .innerRadius(18)
+	.dimension(dimCats)
+	.label(function (d) {return "";})
+	.colors(['#00cc00','#f0390c'])
+	.group(grpCats);
+	//.legend(dc.legend());
+
+var grpDogs = dimDogs.group().reduceCount();
+
+var chtDogs = dc.pieChart("#dogs")
+ 	.width(75)
+	.height(75)
+	.slicesCap(2)
+    .innerRadius(18)
+	.dimension(dimDogs)
+	.label(function (d) {return "";})
+	.colors(['#00cc00','#f0390c'])
+	.group(grpDogs);
+	//.legend(dc.legend());
 
 
 

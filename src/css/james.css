@@ -6,6 +6,19 @@
 	padding:10px;
 	margin: 5px
 }
+
+.small-graph {
+	padding:2px;
+	margin: 3px;
+	position: relative
+}
+
+.small-graph .graph-title {
+	position: absolute;
+  	left: 23px;
+  	top: 28px;
+}
+
 .graph-title {
 	display: block;
 	text-align: center;
