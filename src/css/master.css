@@ -19,8 +19,8 @@ html, body{
 
 #list-controls{
   left: 9px;
-  bottom: 9px;
-  /*top: 84px;*/
+  /*bottom: 9px;*/
+  top: 149px;
 }
 
 #animal-switches {
